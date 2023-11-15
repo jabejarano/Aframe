@@ -15,3 +15,27 @@ AFRAME.registerPrimitive('a-cone', {
         opacity: 'cone.opacity'
     }
   });
+// Registrar componente básico
+AFRAME.registerComponent('foo', {
+  schema: {
+    bar: {type: 'number'},
+    baz: {type: 'string'}
+  },
+
+  init: function () {
+    // Hacer algo cuando se adjunta el componente por primera vez.
+  },
+
+  update: function () {
+    // Hacer algo cuando se actualicen los datos del componente.
+  },
+
+  remove: function () {
+    // Hacer algo cuando el componente o su entidad esté desconectado.
+  },
+
+  tick: function (time, timeDelta) {
+    // Haz algo en cada tick o fotograma de la escena.
+  }
+
+  });

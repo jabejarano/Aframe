@@ -1,18 +1,22 @@
 <html>
-
   <head>
     <!--Cargar biblioteca de A-frame en mi página web-->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <!--biblioteca A-Frame Physics System en mi página web-->
-    <script src="RegistrarPrimitivo.js"></script> <!-- scrip del JS -->
+    <!-- scrip del JS -->
+    <script src="RegistrarPrimitivo.js"></script> 
   </head>
   <body>
     <a-scene>
       <!--dynamic-body -> permite que el cubo se mueva y reaccione a eventos físicos.-->
       <a-box position="0 1 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-       <!-- Registro del primitivo a-plane -->
-       <a-cone color="aqua" radius-bottom="1" radius-top="0.2" height="2" position="2 1 -3" density="5" opacity="0.8"></a-cone>
+      <!-- Registro del primitivo a-cone -->
+      <a-cone color="aqua" radius-bottom="1" radius-top="0.2" height="2" position="2 1 -3" density="5" opacity="0.8"></a-cone>
       <a-entity geometry="primitive: ring; radiusInner: 1; radiusOuter: 1.5" material="color: red" position="-1 0.5 -3" ></a-entity>
+      <!-- Sintaxis de entidad-componente (light="type: point; color: white; intensity: 2" me da error ¿?)-->
+      <a-entity geometry="primitive: sphere; radius: 1.5" material="color: red"
+      position="-2 1 -3"></a-entity>
+      <!--Declarar entidad que se le asigna un componente regidtrado en el JS previamente-->
+      <a-entity foo="bar: 5; baz: bazValue"></a-entity>
     </a-scene>
   </body>
 </html>
