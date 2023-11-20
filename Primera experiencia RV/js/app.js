@@ -19,9 +19,10 @@ function initScene(){
 
     orbits.forEach(orbit=> {
         ovnis.forEach(pos =>{
-            let ovni = document.createElement('a-entity')
-            ovni.setAttribute('geometry', {primitive: 'sphere', radius: Math.random() * 3 + 0.5})
+            let ovni = document.createElement('a-image')
             ovni.setAttribute('material', {shader: 'flat', src: '#ovni'})
+            ovni.setAttribute('width', '4'); 
+            ovni.setAttribute('height', '4'); 
             ovni.setAttribute('class', 'ovni')
             ovni.object3D.position.set(pos.x, pos.y, pos.z)
             ovni.setAttribute('shootable', 'ovni')
@@ -34,8 +35,17 @@ function initScene(){
 AFRAME.registerComponent('shootable', {
     init: function () {
         this.el.addEventListener('click', () => {
-            this.el.parentNode.removeChild(this.el)
-            document.querySelector('[text]').setAttribute('value', `${++score} meteoritos cazados`)
-        })
+            // this.el.setAttribute('material', {shader: 'flat', src: '#ovni_dañado'})
+            // document.querySelector('[text]').setAttribute('value', `${++score} meteoritos cazados`)
+            if (!this.el.getAttribute('data-damaged')) {
+                // Si el ovni no ha sido dañado, cambiar su apariencia
+                this.el.setAttribute('material', {shader: 'flat', src: '#ovni_dañado'});
+                this.el.setAttribute('data-damaged', true);
+            } else {
+                // Si el ovni ya fue dañado, eliminarlo
+                this.el.parentNode.removeChild(this.el);
+                document.querySelector('[text]').setAttribute('value', `${++score} ovnis eliminados`);
+            }
+        });
     }
-})
+});

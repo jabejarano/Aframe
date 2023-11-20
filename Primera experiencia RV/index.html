@@ -12,31 +12,32 @@
         <a-assets><!-- Carga todos los recursos en externo que queremos que sean precargados previo a la ejecución  del a-scene -->
             <img src="textures/ovni.jpg" id="ovni">
             <img src="textures/space.jpg" id="space">
+            <img src="textures/ovni_dañado.jpg" id="ovni_dañado">
         </a-assets>
         <a-sky src="#space"></a-sky>
 
 
         <!--"Shader: flat" ajustar la imagen alrededor de la forma-->
-        <a-entity position="0 3 0" rotation="0 3 0" class="orbit"
-            animation="property: rotation; to: 0 360 360; loop: true; dur: 20000; easing: linear">
+        <a-entity position="0 3 0" rotation="0 0 0" class="orbit"
+            animation="property: rotation; to: 0 360 360; loop: true; dur: 30000; easing: linear">
         </a-entity>
 
         <a-entity position="3 0 0" rotation="0 0 0" class="orbit"
-            animation="property: rotation; to: 0 -360 0; loop: true; dur: 20000; easing: linear">
+            animation="property: rotation; to: 0 -360 0; loop: true; dur: 30000; easing: linear">
         </a-entity>
 
-        <a-entity position="0 -3 0" rotation="0 -3 0" class="orbit"
-            animation="property: rotation; to: 0 270 360; loop: true; dur: 20000; easing: linear">
+        <a-entity position="0 -3 0" rotation="0 0 0" class="orbit"
+            animation="property: rotation; to: 0 270 360; loop: true; dur: 30000; easing: linear">
         </a-entity>
 
         <a-entity position="-3 0 0" rotation="0 0 0" class="orbit" 
-            animation="property: rotation; to: 360 -360 0; loop: true; dur: 20000; easing: linear">
+            animation="property: rotation; to: 360 -360 0; loop: true; dur: 30000; easing: linear">
         </a-entity>
         
         <a-entity camera look-controls>
-            <a-text value="0 ovnis cazados" color="red" position="0 -0.1 -1" width="1" align="center"></a-text>
+            <a-text value="0 ovnis eliminados" color="white" position="0 -0.1 -1" width="1" align="center"></a-text>
 
-            <a-entity cursor="fuse: true; fuseTimeout: 100" position="0 0 -1" raycaster="objects: .ovni"
+            <a-entity cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1" raycaster="objects: .ovni"
                 geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="shader: flat"></a-entity>
         </a-entity>
     </a-scene>
